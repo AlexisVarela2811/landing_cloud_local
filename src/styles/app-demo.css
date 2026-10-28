@@ -275,6 +275,17 @@
 		.aw-rail { width: 48px; }
 		.aw-brand { width: 32px; height: 32px; }
 		.aw-thead, .aw-row { padding-left: .65rem; padding-right: .65rem; }
+		/* Toolbar density: chips scroll horizontally next to the view toggle. */
+		.aw-chips { flex: 1 1 0; min-width: 0; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+		.aw-chips::-webkit-scrollbar { display: none; }
+		.aw-chip { flex: 0 0 auto; white-space: nowrap; font-size: .68rem; padding: .28rem .6rem; }
+		.aw-viewtoggle { margin-left: auto; }
+		.aw-row .aw-colcheck { min-width: 20px; padding-left: 0; }
+		/* Upload card: tighter rhythm. */
+		.aw-uploadbar { padding: .7rem .85rem; gap: .55rem; }
+		.aw-uploadbar .up-btn { font-size: .7rem; padding: .38rem .75rem; }
+		.aw-uploadbar .up-limit { font-size: .6rem; }
+		.aw-uploadbar .up-text { min-width: 0; }
 		.aw-row .aw-namecell small { white-space: normal; }
 	}
 
