@@ -26,6 +26,7 @@
 			'cta.heading': 'Bring your files home.',
 			'cta.description': 'Get started with CloudLocal and give your files a place on your own network.',
 			'cta.download': 'Download free',
+			'footer.privacy': 'Privacy',
 			'footer.license': 'MIT license · v1.0',
 			'demo.caption': 'An interactive CloudLocal demo with fictional data.'
 		},
@@ -48,6 +49,7 @@
 			'cta.heading': 'Tus archivos en tu casa.',
 			'cta.description': 'Empieza con CloudLocal y dale a tus archivos un lugar en tu propia red.',
 			'cta.download': 'Descargar gratis',
+			'footer.privacy': 'Privacidad',
 			'footer.license': 'Licencia MIT · v1.0',
 			'demo.caption': 'Demostración navegable de CloudLocal con datos ficticios.'
 		}

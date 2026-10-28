@@ -1,0 +1,78 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Privacy — CloudLocal" description="CloudLocal landing privacy notice: no cookies, no analytics, no accounts, no personal data collected.">
+	<main class="wrap">
+		<span class="kicker">Privacy / Privacidad</span>
+		<h1>No data. No tracking. <em>No catch.</em></h1>
+
+		<section lang="es">
+			<h2>ES — Política de privacidad</h2>
+			<p>
+				Esta landing <strong>no utiliza cookies, ni analítica, ni formularios, ni cuentas de
+				usuario</strong>. No recopilamos, almacenamos ni compartimos datos personales. La demo de la
+				aplicación se ejecuta íntegramente en tu navegador con datos ficticios: nada sale de tu
+				equipo.
+			</p>
+			<p>
+				El hosting del sitio (por ejemplo, Netlify) puede registrar datos técnicos de acceso
+				(genéricos, como la IP del visitante) durante períodos cortos para operar y proteger el
+				servicio. CloudLocal no tiene acceso a esos registros ni los usa para perfilarte.
+			</p>
+			<p>
+				Si descargas la aplicación desde
+				<a href="https://github.com/AlexisVarela2811/CloudLocal/releases/latest">GitHub Releases</a>,
+				aplican las condiciones de esa plataforma. La aplicación en sí no envía telemetría: sus
+				archivos nunca salen de tu red local.
+			</p>
+			<p>
+				Para consultas sobre este sitio, abre un issue en el
+				<a href="https://github.com/AlexisVarela2811/CloudLocal">repositorio del proyecto</a>.
+			</p>
+		</section>
+
+		<section lang="en">
+			<h2>EN — Privacy notice</h2>
+			<p>
+				This landing page <strong>uses no cookies, no analytics, no forms, and no user
+				accounts</strong>. We do not collect, store, or share personal data. The application demo
+				runs entirely in your browser with fictional data: nothing leaves your machine.
+			</p>
+			<p>
+				The site's hosting provider (e.g. Netlify) may keep short-lived technical access logs
+				(generic data such as the visitor's IP) to operate and protect the service. CloudLocal has
+				no access to those logs and does not use them for profiling.
+			</p>
+			<p>
+				If you download the application from
+				<a href="https://github.com/AlexisVarela2811/CloudLocal/releases/latest">GitHub Releases</a>,
+				that platform's own terms apply. The application itself sends no telemetry: your files never
+				leave your local network.
+			</p>
+			<p>
+				For questions about this site, open an issue in the
+				<a href="https://github.com/AlexisVarela2811/CloudLocal">project repository</a>.
+			</p>
+		</section>
+
+		<p><a class="back" href="/">← CloudLocal</a></p>
+	</main>
+</Layout>
+
+<style>
+	.wrap { max-width: 720px; margin: 0 auto; padding: 4rem 1.5rem 5rem; }
+	.kicker {
+		font: 600 .7rem 'SF Mono', 'Cascadia Code', monospace; letter-spacing: .1em;
+		text-transform: uppercase; color: var(--accent);
+	}
+	h1 { margin: .75rem 0 2.2rem; font-size: clamp(2rem, 4.5vw, 3rem); letter-spacing: -.035em; line-height: 1.1; }
+	h1 em { font-style: normal; color: var(--accent); }
+	section { border-top: 1px solid var(--line); padding-top: 2rem; margin-bottom: 2.5rem; }
+	h2 { font-size: 1.1rem; letter-spacing: -.01em; margin-bottom: 1rem; }
+	p { color: var(--muted); font-size: .9rem; line-height: 1.7; margin-bottom: 1rem; }
+	strong { color: var(--text); }
+	a { color: var(--accent); text-decoration: none; }
+	a:hover { text-decoration: underline; }
+	.back { font-weight: 600; }
+</style>

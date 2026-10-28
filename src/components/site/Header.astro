@@ -2,7 +2,22 @@
 /*
  * Site header: wordmark + logo, language selector, plain Download link and a
  * GitHub stars pill (S3). The content shares the centered width with the footer.
+ * The star count is fetched from the GitHub API at build time so it is always
+ * the real number; if the fetch fails the pill degrades to "GitHub stars".
  */
+const REPO = 'https://github.com/AlexisVarela2811/CloudLocal';
+let stars = null;
+try {
+	const res = await fetch('https://api.github.com/repos/AlexisVarela2811/CloudLocal', {
+		headers: { 'User-Agent': 'cloudlocal-landing-build' }
+	});
+	if (res.ok) {
+		const data = await res.json();
+		if (typeof data.stargazers_count === 'number') stars = data.stargazers_count;
+	}
+} catch {
+	/* offline build: fall back to the count-less pill */
+}
 ---
 
 <header class="site-width">
@@ -33,7 +48,7 @@
 			<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
 				<path d="M8 1.4l1.94 3.93 4.33.63-3.13 3.05.74 4.31L8 11.29l-3.88 2.03.74-4.31L1.73 5.96l4.33-.63z" />
 			</svg>
-			24k+ GitHub stars
+			{stars === null ? 'GitHub stars' : `${stars.toLocaleString('en-US')} ${stars === 1 ? 'GitHub star' : 'GitHub stars'}`}
 		</a>
 	</nav>
 </header>
