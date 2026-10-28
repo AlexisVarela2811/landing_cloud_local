@@ -1,0 +1,22 @@
+---
+/*
+ * Footer (S8): Spanish credit line with a link to the author's portfolio and a
+ * license line. Content shares the header's centered width (S3).
+ */
+---
+
+<footer class="site-width">
+	<span lang="es">© 2026 - Creado con ❤️ por <a href="https://alexsibdev.netlify.app/">AlexsibDev</a></span>
+	<span class="mono" data-i18n="footer.license">MIT license · v1.0</span>
+</footer>
+
+<style>
+	footer {
+		border-top: 1px solid var(--line); padding-block: 1.5rem; color: var(--muted2);
+		font-size: .72rem; display: flex; flex-wrap: wrap; gap: .75rem;
+		justify-content: space-between; background: var(--surface);
+	}
+	.mono { font-family: 'SF Mono', 'Cascadia Code', 'Fira Code', monospace; }
+	footer :global(a) { color: var(--accent); text-decoration: none; }
+	footer :global(a:hover) { text-decoration: underline; }
+</style>

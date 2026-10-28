@@ -32,3 +32,64 @@
 	--line2: #162032;
 	--line-strong: #2d3a4f;
 }
+
+/*
+ * Landing additions — values from the Warm editorial artboard.
+ * Token source remains design/system.md; these only add landing-level
+ * primitives (motion, shared centered width, display headline).
+ */
+:root {
+	--ease: cubic-bezier(0.4, 0, 0.2, 1);
+	--duration: 150ms;
+	--site-width: 972px;
+}
+
+body {
+	font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
+}
+
+/* Header and footer share the same centered content width (S3). */
+.site-width {
+	padding-inline: max(1.5rem, calc((100% - var(--site-width)) / 2));
+}
+
+/* Primary button (artboard .btn-primary). */
+.btn-primary {
+	background: var(--accent); color: #fff; border: none; cursor: pointer;
+	font: 600 .78rem 'Inter', system-ui, sans-serif; padding: .55rem 1.1rem; border-radius: var(--radius-sm);
+	transition: transform var(--ease) var(--duration), box-shadow var(--ease) var(--duration), background var(--ease) var(--duration);
+}
+.btn-primary:hover { background: var(--accent2); transform: translateY(-1px); box-shadow: 0 2px 8px rgba(13,148,136,.25); }
+.btn-primary.btn-lg { font-size: .86rem; padding: .72rem 1.6rem; border-radius: var(--radius); }
+
+/* GitHub text link (hero + open-source section). */
+.hero-gh {
+	display: inline-flex; align-items: center; gap: .4rem; margin-top: 1.15rem;
+	font: 500 .78rem 'Inter', system-ui, sans-serif; color: var(--muted); text-decoration: none;
+	transition: color var(--ease) var(--duration);
+}
+.hero-gh svg { width: 14px; height: 14px; color: var(--text); flex-shrink: 0; transition: color var(--ease) var(--duration); }
+.hero-gh:hover, .hero-gh:hover svg { color: var(--accent); }
+
+/*
+ * Hero ASCII silhouettes: decorative canvases whose internals are created by
+ * src/scripts/ascii-tiles.js, so these rules must be global.
+ */
+.hero-tiles { position: absolute; inset: 0; pointer-events: none; }
+.dot-tile { position: absolute; width: clamp(180px, 22vw, 250px); height: 260px; animation: ascii-float 7s ease-in-out infinite alternate; }
+.dot-tile:nth-child(1) { left: 0; top: 5rem; }
+.dot-tile:nth-child(2) { right: 0; top: 5rem; animation-delay: -3.5s; }
+.dot-tile canvas { display: block; width: 100%; height: 100%; }
+@keyframes ascii-float {
+	from { transform: translateY(-5px) rotate(-2deg); }
+	to { transform: translateY(5px) rotate(2deg); }
+}
+
+@media (max-width: 900px) {
+	.hero-tiles { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+	.dot-tile { animation: none !important; }
+}
