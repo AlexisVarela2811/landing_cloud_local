@@ -248,6 +248,21 @@
 		.aw-body, .aw-notice, .aw-uploadbar, .aw-selbar { margin-left: 1rem; margin-right: 1rem; }
 		.aw-toolbar { padding-left: 1rem; padding-right: 1rem; }
 	}
+	/* Very narrow containers (phones): stack the topbar and collapse table
+	   columns to check + name + actions; dates and sizes hide. */
+	@container aw (max-width: 430px) {
+		.aw-topbar { flex-wrap: wrap; row-gap: .4rem; }
+		.aw-topbar-left { flex: 1 1 100%; }
+		.aw-top-actions { flex: 1 1 100%; justify-content: flex-start; flex-wrap: wrap; row-gap: .4rem; }
+		.aw-btn { font-size: .72rem; padding: .4rem .6rem; }
+		.aw-title { font-size: 1.5rem; }
+		.aw-sub { font-size: .72rem; }
+		.aw-thead, .aw-row { grid-template-columns: 28px minmax(0,1fr) 88px; gap: .5rem; }
+		.aw-table.nowcheck .aw-thead, .aw-table.nowcheck .aw-row { grid-template-columns: minmax(0,1fr) 88px; }
+		.aw-meta { display: none; }
+		.aw-row .aw-namecell small { white-space: normal; }
+	}
+
 	/* Numbered sections */
 
 .product { max-width: 1100px; margin: 0 auto; padding: 0 clamp(1rem, 6%, 4rem) 1rem; }
