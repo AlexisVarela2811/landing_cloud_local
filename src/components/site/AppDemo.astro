@@ -1,0 +1,174 @@
+---
+/*
+ * Interactive replica of the CloudLocal UI (fictional data, Spanish UI).
+ * Ported from design/landing-cloud-local/02-warm-editorial.html — the demo is
+ * self-contained: its .aw-* classes are plain global CSS (src/styles/app-demo.css)
+ * and the logic lives in src/scripts/app-demo.js.
+ */
+import '../../styles/app-demo.css';
+---
+
+<section class="product" lang="es" aria-label="Demo interactiva del producto">
+	<div class="appwin" data-apptheme="light" role="region" aria-label="Demo interactiva de la interfaz de CloudLocal">
+		<aside class="aw-rail">
+			<span class="aw-brand">
+				<svg viewBox="0 0 100 80" fill="none" role="img" aria-label="CloudLocal">
+					<defs><linearGradient id="cldGradApp" x1="0" y1="0" x2="100" y2="80" gradientUnits="userSpaceOnUse">
+						<stop offset="0%" stop-color="#2563eb"/><stop offset="40%" stop-color="#3b82f6"/><stop offset="70%" stop-color="#f59e0b"/><stop offset="100%" stop-color="#fbbf24"/>
+					</linearGradient></defs>
+					<path d="M28 58 Q18 58 18 50 Q18 42 26 40 Q28 28 38 24 Q42 16 52 16 Q62 16 66 24 Q76 20 84 28 Q92 32 92 42 Q92 50 84 52 L84 56 Q84 58 82 58 Z" fill="url(#cldGradApp)" stroke="white" stroke-width="2.5" stroke-linejoin="round"/>
+					<path d="M34 52 Q30 52 30 46 Q30 40 36 38 Q38 30 44 28 Q48 24 52 26 Q50 32 48 40 Q44 48 52 52 Z" fill="white" opacity="0.25"/>
+				</svg>
+			</span>
+			<button class="aw-rbtn active" data-nav="files" aria-label="Archivos" aria-current="page"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.5 2.5c.4 0 .8.24.96.61l.4.89h4.64c.83 0 1.5.67 1.5 1.5v6c0 .83-.67 1.5-1.5 1.5h-10c-.83 0-1.5-.67-1.5-1.5v-7c0-.83.67-1.5 1.5-1.5h4z"/></svg><span class="aw-tip">Archivos</span></button>
+			<button class="aw-rbtn" data-nav="recent" aria-label="Recientes"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="6.2"/><path d="M8 4.8V8l2.2 1.4"/></svg><span class="aw-tip">Recientes</span></button>
+			<button class="aw-rbtn" data-nav="trash" aria-label="Papelera"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 4.5h10M6.5 4.5V3.2c0-.4.3-.7.7-.7h1.6c.4 0 .7.3.7.7v1.3M4.5 4.5l.6 8c0 .4.4.8.8.8h4.2c.4 0 .8-.4.8-.8l.6-8"/></svg><span class="aw-tip">Papelera</span></button>
+			<button class="aw-rbtn" data-nav="settings" aria-label="Configuración"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="6.2"/><path d="M6 6a2 2 0 1 1 2.7 1.9c-.5.2-.7.6-.7 1.1v.3"/><circle cx="8" cy="11.4" r=".7" fill="currentColor" stroke="none"/></svg><span class="aw-tip">Configuración</span></button>
+			<span class="aw-spacer"></span>
+			<span class="aw-statuswrap" title="Servidor local activo"><span class="aw-statusdot"></span></span>
+			<button class="aw-rbtn" id="awThemeBtn" aria-label="Cambiar de tema" title="Cambiar de tema"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M13.6 9.9A6 6 0 0 1 6.1 2.4a.6.6 0 0 0-.8-.7 6.5 6.5 0 1 0 9 9 .6.6 0 0 0-.7-.8z"/></svg><span class="aw-tip">Tema</span></button>
+			<button class="aw-rbtn" aria-label="Cerrar sesión" title="Cerrar sesión (demo)"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M10.5 2.5h2.5c.6 0 1 .4 1 1v9c0 .6-.4 1-1 1h-2.5M6.5 11 3.5 8l3-3M3.5 8h7"/></svg><span class="aw-tip">Cerrar sesión</span></button>
+			<span class="aw-avatar" title="Tu avatar (generado con blobatar)">
+				<svg viewBox="0 0 100 100" role="img" aria-label="Avatar blob">
+					<clipPath id="awBlobClip"><circle cx="50" cy="50" r="50"/></clipPath>
+					<g clip-path="url(#awBlobClip)">
+						<rect width="100" height="100" fill="#0b1120"/>
+						<path d="M50 18 C68 18 82 30 82 48 C82 66 70 82 50 82 C30 82 18 66 18 48 C18 30 32 18 50 18 Z" fill="#14b8a6"/>
+						<path d="M50 24 C63 24 74 33 74 47 C74 61 64 74 50 74 C36 74 26 61 26 47 C26 33 37 24 50 24 Z" fill="#0d9488" opacity=".55"/>
+						<rect x="38" y="42" width="9" height="15" rx="4.5" fill="#f1f5f9"/>
+						<rect x="53" y="42" width="9" height="15" rx="4.5" fill="#f1f5f9"/>
+						<rect x="41" y="47" width="3.5" height="6" rx="1.75" fill="#0b1120"/>
+						<rect x="56" y="47" width="3.5" height="6" rx="1.75" fill="#0b1120"/>
+					</g>
+				</svg>
+			</span>
+		</aside>
+		<div class="aw-main">
+			<header class="aw-topbar">
+				<div class="aw-topbar-left">
+					<nav class="aw-crumbs" aria-label="Ruta" id="awCrumbs"></nav>
+					<h3 class="aw-title" id="awTitle">Mis archivos</h3>
+					<p class="aw-sub" id="awSubtitle" hidden></p>
+				</div>
+				<div class="aw-top-actions" id="awTopActions">
+					<button class="aw-btn" id="awNewFolder" title="Nueva carpeta (demo)"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 3v10M3 8h10"/></svg>Nueva carpeta<span class="aw-shortcut">Ctrl+Alt+N</span></button>
+					<button class="aw-btn aw-btn-upload" title="Elegir archivos para subir (demo)"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 10.5V2.5M5 5l3-3 3 3M2.5 13.5h11"/></svg>Subir</button>
+					<button class="aw-btn aw-btn-danger" id="awTopApagar" title="Apagar servidor (demo)"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 1.5v6"/><path d="M4.2 3.5a5.8 5.8 0 1 0 7.6 0"/></svg>Apagar</button>
+				</div>
+			</header>
+
+			<!-- Vista de archivos -->
+			<div class="aw-view" id="awFilesView">
+				<div class="aw-toolbar">
+					<button class="aw-back" id="awBack" title="Volver a la carpeta anterior"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M10.5 3 5.5 8l5 5"/></svg>Volver</button>
+					<span class="aw-searchwrap"><input class="aw-search" type="search" placeholder="Buscar en esta carpeta…" aria-label="Buscar archivos" id="awQuery"></span><button class="aw-btn" data-act="refresh" title="Actualizar (demo)" aria-label="Actualizar"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M13.5 8a5.5 5.5 0 1 1-1.62-3.9"/><path d="M13.5 1.8v2.8h-2.8"/></svg>Actualizar</button>
+					<span class="aw-chips" role="group" aria-label="Filtrar por tipo de archivo" id="awChips"></span>
+					<span class="aw-viewtoggle" role="radiogroup" aria-label="Vista de archivos">
+						<button class="on" id="awViewList" role="radio" aria-checked="true" aria-label="Vista de lista" title="Vista de lista"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><rect x="2" y="2" width="12" height="2" rx=".5"/><rect x="2" y="7" width="12" height="2" rx=".5"/><rect x="2" y="12" width="12" height="2" rx=".5"/></svg></button>
+						<button id="awViewGrid" role="radio" aria-checked="false" aria-label="Vista de cuadrícula" title="Vista de cuadrícula"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><rect x="1.5" y="1.5" width="5.5" height="5.5" rx="1"/><rect x="9" y="1.5" width="5.5" height="5.5" rx="1"/><rect x="1.5" y="9" width="5.5" height="5.5" rx="1"/><rect x="9" y="9" width="5.5" height="5.5" rx="1"/></svg></button>
+					</span>
+				</div>
+				<div class="aw-uploadbar">
+					<span class="up-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 10.5V2.5M5 5l3-3 3 3M2.5 13.5h11"/></svg></span>
+					<span class="up-text"><strong>Subir archivos</strong><span class="up-sub">Máximo 512 MiB por archivo</span></span>
+					<span class="up-limit"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M8 1.5 15 14H1L8 1.5zM8 6v4M8 11.5v1.2"/></svg>.exe, .bat y similares bloqueados</span>
+					<button class="up-btn" title="Demo: el selector de archivos no abre aquí"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 10.5V2.5M5 5l3-3 3 3M2.5 13.5h11"/></svg>Elegir archivos</button>
+				</div>
+				<div class="aw-selbar" id="awSelbar" role="status">
+					<span class="sel-count" id="awSelCount"></span>
+					<button title="Demo"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 2v8M5 7l3 3 3-3M2.5 13.5h11"/></svg>Descargar</button>
+					<button title="Demo"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.5 2.5c.4 0 .8.24.96.61l.4.89h4.64c.83 0 1.5.67 1.5 1.5v6c0 .83-.67 1.5-1.5 1.5h-10c-.83 0-1.5-.67-1.5-1.5v-7c0-.83.67-1.5 1.5-1.5h4z"/></svg>Mover</button>
+					<button class="sel-clear" id="awSelClear">Limpiar selección</button>
+				</div>
+				<div class="aw-body">
+					<div class="aw-table" id="awTable"></div>
+					<div class="aw-grid" id="awGrid"></div>
+					<section class="aw-recent" id="awRecent" aria-label="Añadido recientemente" hidden>
+						<h4 class="aw-recent-title">Añadido recientemente</h4>
+						<div class="aw-recent-grid" id="awRecentGrid"></div>
+					</section>
+				</div>
+			</div>
+
+			<!-- Vista de recientes -->
+			<div class="aw-view" id="awRecentView" hidden>
+				<div class="aw-toolbar">
+					<span class="aw-searchwrap"><input class="aw-search" type="search" placeholder="Buscar en esta carpeta…" aria-label="Buscar archivos" id="awRecentQuery"></span><button class="aw-btn" data-act="refresh" title="Actualizar (demo)" aria-label="Actualizar"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M13.5 8a5.5 5.5 0 1 1-1.62-3.9"/><path d="M13.5 1.8v2.8h-2.8"/></svg>Actualizar</button>
+				</div>
+				<div class="aw-body">
+					<div class="aw-table nowcheck" id="awRecentTable"></div>
+				</div>
+			</div>
+
+			<!-- Vista de papelera -->
+			<div class="aw-view" id="awTrashView" hidden>
+				<div class="aw-toolbar">
+					<button class="aw-back show" id="awTrashBack"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M10.5 3 5.5 8l5 5"/></svg>Volver a archivos</button>
+					<span class="aw-tb-gap"></span>
+					<button class="aw-btn aw-btn-danger" id="awEmptyTrash"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 4.5h10M6.5 4.5V3.2c0-.4.3-.7.7-.7h1.6c.4 0 .7.3.7.7v1.3M4.5 4.5l.6 8c0 .4.4.8.8.8h4.2c.4 0 .8-.4.8-.8l.6-8"/></svg>Vaciar papelera</button>
+				</div>
+				<div class="aw-body">
+					<div class="aw-table" id="awTrashTable"></div>
+				</div>
+			</div>
+
+			<!-- Vista de configuración -->
+			<div class="aw-view" id="awSettingsView" hidden>
+				<div class="aw-settings">
+					<section class="aw-set-card" aria-labelledby="awSetAppearance">
+						<div class="aw-set-head">
+							<h4 id="awSetAppearance">Apariencia</h4>
+							<p class="aw-set-desc">Cómo se ve CloudLocal en este navegador.</p>
+						</div>
+						<div class="aw-set-row">
+							<div class="aw-set-text">
+								<span class="aw-set-label" id="awDarkModeLabel">Modo oscuro</span>
+								<span class="aw-set-hint">Se guarda en este equipo y sigue al botón de tema de la barra lateral.</span>
+							</div>
+							<button class="aw-switch" id="awThemeSwitch" type="button" role="switch" aria-checked="false" aria-labelledby="awDarkModeLabel">
+								<span class="aw-switch-track"><span class="aw-switch-thumb"></span></span>
+								<span class="aw-switch-label" id="awThemeLabel">Desactivado</span>
+							</button>
+						</div>
+					</section>
+					<section class="aw-set-card" aria-labelledby="awSetStorage">
+						<div class="aw-set-head">
+							<h4 id="awSetStorage">Carpeta de almacenamiento</h4>
+							<p class="aw-set-desc">Dónde viven tus archivos en el ordenador servidor.</p>
+						</div>
+						<div class="aw-set-row">
+							<span class="aw-set-label">Carpeta activa</span>
+							<input class="aw-set-value" type="text" value="C:\Users\demo\.cloudlocal\files" readonly aria-label="Carpeta activa">
+						</div>
+						<div class="aw-set-field">
+							<label for="awNewFolderPath">Cambiar carpeta</label>
+							<div class="aw-set-inline">
+								<input id="awNewFolderPath" type="text" placeholder="Ruta absoluta de la carpeta">
+								<button class="aw-btn aw-btn-accent" id="awSaveFolder" type="button">Guardar</button>
+							</div>
+						</div>
+						<button class="aw-btn aw-btn-outline" id="awResetFolder" type="button">Restablecer carpeta por defecto</button>
+					</section>
+					<section class="aw-set-card aw-set-danger" aria-labelledby="awSetServer">
+						<div class="aw-set-head">
+							<h4 id="awSetServer">Servidor</h4>
+							<p class="aw-set-desc">Detener el servidor cierra CloudLocal para todos los equipos hasta que lo vuelvas a abrir.</p>
+						</div>
+						<div class="aw-set-row">
+							<div class="aw-set-text">
+								<span class="aw-set-label">Apagar el servidor</span>
+								<span class="aw-set-hint">Los archivos permanecen en el disco del equipo servidor.</span>
+							</div>
+							<button class="aw-btn aw-btn-danger" id="awShutdown" type="button">Apagar</button>
+						</div>
+					</section>
+				</div>
+			</div>
+
+			<p class="aw-notice" id="awNotice" role="status" aria-live="polite"></p>
+		</div>
+	</div>
+	<p class="product-caption">La interfaz real de CloudLocal — navegable: carpetas, Recientes, Papelera y Configuración, cambio de tema, selección y papelera funcional. Datos ficticios.</p>
+</section>
+
+<script src="../../scripts/app-demo.js"></script>
