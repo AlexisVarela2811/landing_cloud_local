@@ -21,16 +21,17 @@ replicates the real CloudLocal UI.
 
 ## Tasks
 
-- T1 (S2, S10): Global styles — tokens, fonts, base type scale + display headline; Layout.astro (lang handling, meta). Commit C1.
-- T2 (S3, S8): Header.astro + Footer.astro components (lang select, Download link, stars pill; centered content width; credit link). Commit C1.
-- T3 (S4, S5): Hero.astro + ascii-tiles client script (two silhouettes, float, reduced-motion, <900px hidden). Commit C2.
-- T4 (S6): AppDemo.astro — port replica markup/styles/JS as component + bundled client script; theme switch, trash, selection, search, views. Commit C3.
-- T5 (S7): Story.astro, OpenSource.astro, Cta.astro. Commit C4.
-- T6 (S9): i18n client script — auto-detect + header selector; demo stays Spanish. Commit C4.
-- T7 (S1, S2): Verify — `npm run build`, preview server, Playwright: ES/EN auto+manual, reduced motion, demo interactions, no console errors; then handoff "implemented" with previewUrl. Commit C5 (fixes if any).
+- T1 (S2, S10): Global styles — tokens, fonts, base type scale + display headline; Layout.astro (lang handling, meta). Commit 58c132f.
+- T2 (S3, S8): Header.astro + Footer.astro components (lang select, Download link, stars pill; centered content width; credit link). Commit 58c132f.
+- T3 (S4, S5): Hero.astro + ascii-tiles client script (two silhouettes, float, reduced-motion, <900px hidden). Commit 1a2ce6c.
+- T4 (S6): AppDemo.astro — port replica markup/styles/JS as component + bundled client script; theme switch, trash, selection, search, views. Commit aec5eee.
+- T5 (S7): Story.astro (includes the open-source section), OpenSource section inside Story, Cta.astro. Commit 2c7aeb1.
+- T6 (S9): i18n client script — auto-detect + header selector; demo stays Spanish. Commit 2c7aeb1.
+- T7 (S1, S2): Verify — npm run build OK; preview on :4321; Playwright 15/15 PASS (ES/EN auto+manual per es-ES/en-US, canvases render, demo renders + trash nav, no page errors, reduced-motion canvases, mobile header overflow none, tiles hidden <900px). Handoff marked implemented. Verification script D:/tmp/verify-landing.js (scratch, not committed).
 
 ## Log
 
 - L1: "Implement the design artboard design/landing-cloud-local/02-warm-editorial.html … Implement it in the project's real stack. Use the artboard as the visual spec: map its parts to the project's existing components and styles, and do not copy the artboard HTML verbatim. Take colors, typography, spacing, radius and shadows from design/system.md … Report progress with the gentle_design tool … status 'implemented' when it is done, with previewUrl set to the running app's loopback URL … This handoff itself commits nothing."
 - L2: Iteration history of the artboard (from canvas comments, all resolved): 02 Warm editorial iterated to centered hero + GitHub stars pill header; four dot tiles → two large dense ASCII silhouettes (cloud, server) with aqua blooms; sections → open composition without card grids ("muchas cards es como ia"); footer credit "© 2026 - Creado con ❤️ por AlexsibDev" → https://alexsibdev.netlify.app/; "Tus archivos en tu casa."; ES/EN i18n with auto-detect; header/footer content centered to the same width.
 - L3: Branch: `feat/warm-editorial-landing` (created from `main` before C1). Designs remain git-excluded by user decision; this repo holds only the implementation.
+- L4: Implementation completed 2026-10-28. Commits 58c132f / 1a2ce6c / aec5eee / 2c7aeb1. Build lesson: Astro frontmatter imports execute at build time (window/document ReferenceError) — client scripts must be `<script src>` tags in the template; Astro scoped styles cannot style JS-created DOM, so demo CSS lives in src/styles/app-demo.css and tile CSS in global.css.
