@@ -37,19 +37,22 @@ npm run dev       # http://localhost:4321
 | `npm run build`   | Build the static site to `./dist/`           |
 | `npm run preview` | Serve the production build locally           |
 
-## Configuration before deploying
+## Deploying to Netlify
 
-The output is fully static; it works on Netlify, Vercel, GitHub Pages or any static host.
+The build output is fully static. Netlify settings live in `netlify.toml` (build command
+`npm run build`, publish `dist`); connecting the repository is enough — no extra CI needed, Netlify
+builds on every push. A small GitHub Action (`.github/workflows/build.yml`) runs the same build as
+a check on pushes and pull requests.
 
-Set the production URL once in `astro.config.mjs`:
+After creating the site, set its final URL in `astro.config.mjs`:
 
 ```js
-site: 'https://your-domain.example',
+site: 'https://YOUR-SITE.netlify.app',
 ```
 
-This single value activates the canonical URL, absolute `og:url`/`og:image`, the sitemap
-(`sitemap-index.xml`) and the `Sitemap:` line in `robots.txt`. Everything degrades gracefully while
-it is unset.
+That single value activates the canonical URL, absolute `og:url`/`og:image`, the sitemap
+(`sitemap-index.xml`) and the `Sitemap:` line in `robots.txt`. Until then, share previews still
+work; only those absolute URLs are omitted.
 
 ## Project structure
 

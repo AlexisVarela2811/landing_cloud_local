@@ -1,0 +1,14 @@
+# Netlify build settings; the GitHub Action in .github/workflows is only a
+# build check — Netlify runs its own build on every push.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# CloudLocal is a static site with real 404 handling; no SPA fallback needed.
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
