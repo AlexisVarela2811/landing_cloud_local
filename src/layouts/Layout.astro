@@ -7,6 +7,17 @@ interface Props {
 }
 
 const { title, description = 'CloudLocal — your files, your machine, your cloud.' } = Astro.props;
+
+/*
+ * Absolute URLs come from `site` in astro.config.mjs. Until the production
+ * domain is decided, canonical/og:url/og:image absolute forms are omitted
+ * instead of pointing at a wrong host; social platforms fall back to the
+ * shared page URL.
+ */
+const site = Astro.site;
+const canonical = site ? new URL(Astro.url.pathname, site).href : undefined;
+const ogImage = site ? new URL('/og.png', site).href : '/og.png';
+const ogAlt = 'CloudLocal — A quiet place for your files';
 ---
 
 <html lang="en">
@@ -17,6 +28,44 @@ const { title, description = 'CloudLocal — your files, your machine, your clou
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
 		<title>{title}</title>
+
+		<!-- Browser UI color (light cream page). -->
+		<meta name="theme-color" content="#f5f0eb" />
+
+		<!-- Open Graph (Facebook, LinkedIn, WhatsApp, Discord, Slack, etc.). -->
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="CloudLocal" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={ogImage} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:image:alt" content={ogAlt} />
+		<meta property="og:locale" content="en_US" />
+		<meta property="og:locale:alternate" content="es_ES" />
+		{canonical && <meta property="og:url" content={canonical} />}
+
+		<!-- Twitter/X summary card. -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
+		<meta name="twitter:image:alt" content={ogAlt} />
+
+		{canonical && <link rel="canonical" href={canonical} />}
+
+		<!-- Structured data: free and open-source desktop application. -->
+		<script type="application/ld+json" set:html={JSON.stringify({
+			'@context': 'https://schema.org',
+			'@type': 'SoftwareApplication',
+			name: 'CloudLocal',
+			description,
+			url: canonical,
+			applicationCategory: 'UtilitiesApplication',
+			operatingSystem: 'https://github.com/AlexisVarela2811/CloudLocal',
+			license: 'https://github.com/AlexisVarela2811/CloudLocal',
+			offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }
+		})} />
 	</head>
 	<body class="bg-[var(--bg)] text-[var(--text)] antialiased">
 		<slot />
