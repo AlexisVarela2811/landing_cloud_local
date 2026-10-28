@@ -1,0 +1,18 @@
+---
+/* Closing call to action (S7): big headline, one line, one download button. */
+---
+
+<section class="cta">
+	<h2 data-i18n="cta.heading">Bring your files home.</h2>
+	<p data-i18n="cta.description">Get started with CloudLocal and give your files a place on your own network.</p>
+	<button class="btn-primary btn-lg" type="button" data-i18n="cta.download">Download free</button>
+</section>
+
+<style>
+	.cta { border-top: 1px solid var(--line); text-align: center; padding: 5rem 1.5rem 6rem; }
+	h2 { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 700; letter-spacing: -.035em; line-height: 1.12; }
+	p { color: var(--muted); margin: 1rem auto 1.8rem; max-width: 45ch; font-size: .92rem; }
+	@media (max-width: 720px) {
+		.cta { padding: 4rem 1.5rem; }
+	}
+</style>

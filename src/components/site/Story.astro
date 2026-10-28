@@ -1,0 +1,96 @@
+---
+/*
+ * Story section (S7): example file list next to a short narrative with check
+ * bullets. The example rows mirror the demo's Spanish UI, hence lang="es".
+ */
+---
+
+<div class="story-wrap">
+	<section class="story">
+		<div class="story-preview" lang="es" aria-label="Archivos de ejemplo">
+			<div class="preview-bar"><strong>Mis archivos</strong></div>
+			<div class="preview-rows">
+				<div class="preview-row">
+					<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h7l2 2h9v11H3z" /></svg>
+					Documentos <span>Carpeta</span>
+				</div>
+				<div class="preview-row">
+					<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h7l2 2h9v11H3z" /></svg>
+					Fotos <span>Carpeta</span>
+				</div>
+				<div class="preview-row">
+					<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h9l5 5v13H5z M14 3v5h5" /></svg>
+					Notas.pdf <span>Documento</span>
+				</div>
+			</div>
+		</div>
+		<div class="story-copy">
+			<span class="story-kicker" data-i18n="story.kicker">Your local workspace</span>
+			<h2 data-i18n="story.heading">Your files, right where you need them.</h2>
+			<p data-i18n="story.description">
+				CloudLocal runs on your computer and gives you a familiar way to access files across your
+				local network.
+			</p>
+			<ul>
+				<li data-i18n="story.bullet1">Browse folders and search files</li>
+				<li data-i18n="story.bullet2">Upload and organize your documents</li>
+				<li data-i18n="story.bullet3">Choose a list or grid view</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="open-source">
+		<span class="story-kicker" data-i18n="open.kicker">Open source</span>
+		<h2 data-i18n="open.heading">Built to be yours.</h2>
+		<p data-i18n="open.description">CloudLocal is an open-source project. Explore the code and make it your own.</p>
+		<a class="hero-gh" href="#">
+			<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+				<path
+					d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+			</svg>
+			<span data-i18n="open.link">View the code on GitHub</span>
+			<span aria-hidden="true">↗</span>
+		</a>
+	</section>
+</div>
+
+<style>
+	.story-wrap { max-width: 1100px; margin: 0 auto; padding: 5rem clamp(1rem, 6%, 4rem) 0; }
+	.story {
+		display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 7vw, 5rem);
+		align-items: center; padding: 4rem 0 6rem;
+	}
+	.story-copy { max-width: 42ch; }
+	.story-kicker {
+		font: 600 .7rem 'SF Mono', 'Cascadia Code', monospace; letter-spacing: .1em;
+		text-transform: uppercase; color: var(--accent);
+	}
+	.story h2, .open-source h2 { margin: .75rem 0; font-size: clamp(1.9rem, 3.2vw, 2.7rem); line-height: 1.1; letter-spacing: -.035em; }
+	.story p, .open-source p { color: var(--muted); font-size: .9rem; line-height: 1.7; }
+	.story ul { list-style: none; padding: 0; margin-top: 1.3rem; display: grid; gap: .55rem; color: var(--muted); font-size: .82rem; }
+	.story li::before { content: '✓'; color: var(--accent); margin-right: .65rem; }
+
+	.story-preview {
+		background: var(--surface); border: 1px solid var(--line);
+		border-radius: var(--radius-lg); overflow: hidden;
+		box-shadow: 0 1px 3px rgba(0, 0, 0, .04), 0 1px 2px rgba(0, 0, 0, .03);
+	}
+	.preview-bar { padding: .9rem 1rem; border-bottom: 1px solid var(--line2); font-size: .74rem; color: var(--muted); }
+	.preview-bar strong { color: var(--text); }
+	.preview-rows { padding: .35rem 1rem; }
+	.preview-row { display: flex; align-items: center; gap: .75rem; padding: .8rem 0; border-bottom: 1px solid var(--line2); font-size: .78rem; color: var(--text); }
+	.preview-row:last-child { border: 0; }
+	.preview-row svg { width: 17px; height: 17px; color: var(--accent); fill: none; stroke: currentColor; stroke-width: 1.5; }
+	.preview-row span:last-child { margin-left: auto; color: var(--muted2); font-size: .7rem; }
+
+	.open-source { border-top: 1px solid var(--line); text-align: center; padding: 5rem 1rem; }
+	.open-source p { max-width: 50ch; margin: .9rem auto 0; }
+	.open-source :global(.hero-gh) { margin-top: 1.5rem; }
+
+	@media (max-width: 720px) {
+		.story-wrap { padding-top: 2rem; }
+		.story { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 0 4rem; }
+		.story-copy { max-width: none; }
+		.open-source { padding: 4rem 1rem; }
+	}
+</style>
