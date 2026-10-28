@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+/*
+ * CloudLocal landing — adopted design tokens.
+ * Source: design/system.md (captured from the CloudLocal product repo).
+ */
+:root {
+	--bg: #f5f0eb;
+	--surface: #fdfbf6;
+	--text: #1a1f2b;
+	--muted: #5c6674;
+	--muted2: #687382;
+	--line: #ddd6cd;
+	--line2: #ece7de;
+	--line-strong: #c4bbae;
+	--accent: #0d9488;
+	--accent2: #14b8a6;
+	--accent3: #5eead4;
+	--radius-sm: 5px;
+	--radius: 8px;
+	--radius-lg: 12px;
+	--radius-xl: 16px;
+}
+
+[data-theme="dark"] {
+	--bg: #0b0f19;
+	--surface: #141b2d;
+	--text: #e2e8f0;
+	--muted: #94a3b8;
+	--muted2: #8b9bb0;
+	--line: #1e293b;
+	--line2: #162032;
+	--line-strong: #2d3a4f;
+}
