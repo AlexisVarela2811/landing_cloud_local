@@ -206,14 +206,13 @@ if(!document.querySelector(".appwin"))return;
 		}).join('');
 	}
 	function trashTableHtml() {
-		var head = '<div class="aw-thead"><span></span><span>NOMBRE</span><span class="aw-th-r aw-th-date">MODIFICADO</span><span class="aw-th-r aw-size">TAMAÑO</span><span class="aw-th-r">ACCIONES</span></div>';
+		var head = '<div class="aw-thead"><span>NOMBRE</span><span class="aw-th-r aw-th-date">MODIFICADO</span><span class="aw-th-r aw-size">TAMAÑO</span><span class="aw-th-r">ACCIONES</span></div>';
 		if (TRASH.length === 0) {
 			return head + '<div class="aw-row"><span class="aw-trash-empty"><span class="aw-te-ico">' + ICONS.trash + '</span><span>La papelera está vacía.</span></span></div>';
 		}
 		return head + TRASH.map(function (item) {
 			var path = (item.origin ? item.origin + '/' : '') + item.name;
 			return '<div class="aw-row">' +
-				'<span class="aw-colcheck"></span>' +
 				'<span class="aw-namecell">' + ICONS.fileRow + '<span class="aw-fname" title="Antes: ' + path + '">' + item.name + '<small>Antes: ' + path + '</small></span></span>' +
 				'<span class="aw-meta">' + item.deleted + '</span>' +
 				'<span class="aw-meta aw-size">' + item.size + '</span>' +
