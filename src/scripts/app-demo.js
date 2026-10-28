@@ -56,9 +56,13 @@ if(!document.querySelector(".appwin"))return;
 	};
 	var TRASH = [
 		{ id: 1, name: 'captura-antigua.png', type: 'image', size: '1,4 MiB', origin: 'Fotos 2026/Playa', orig: '12 mar 2026, 9:04', deleted: '3 nov 2026, 18:22' },
-		{ id: 2, name: 'video-viejo.mp4', type: 'video', size: '348,2 MiB', origin: 'Fotos 2026', orig: '7 feb 2026, 21:15', deleted: '1 nov 2026, 20:08' }
+		{ id: 2, name: 'video-viejo.mp4', type: 'video', size: '348,2 MiB', origin: 'Fotos 2026', orig: '7 feb 2026, 21:15', deleted: '1 nov 2026, 20:08' },
+		{ id: 3, name: 'informe-borrador.docx', type: 'word', size: '214,7 KiB', origin: 'Documentos', orig: '24 oct 2026, 10:37', deleted: '30 oct 2026, 9:12' },
+		{ id: 4, name: 'captura-blur.png', type: 'image', size: '2,8 MiB', origin: 'Documentos', orig: '18 oct 2026, 16:45', deleted: '29 oct 2026, 13:04' },
+		{ id: 5, name: 'backup-viejo.zip', type: 'archive', size: '1,2 GiB', origin: '', orig: '2 sep 2026, 8:20', deleted: '27 oct 2026, 19:41' },
+		{ id: 6, name: 'gastos-septiembre.xlsx', type: 'excel', size: '38,4 KiB', origin: 'Documentos', orig: '30 sep 2026, 17:55', deleted: '25 oct 2026, 11:29' }
 	];
-	var trashSeq = 2;
+	var trashSeq = 6;
 	var state = { section: 'files', folder: '', view: 'list', filter: 'all', selected: [], query: '', recentQuery: '', theme: 'light' };
 	var root = document.querySelector('.appwin');
 

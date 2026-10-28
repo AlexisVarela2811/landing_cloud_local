@@ -68,6 +68,10 @@
 	.appwin .aw-crumbs .sep { color: var(--aw-muted2); margin: 0 .2rem; font-size: .68rem; opacity: .5; }
 	.aw-title { font-size: 2rem; font-weight: 700; letter-spacing: -.03em; color: var(--aw-text); line-height: 1.15; margin: 0; }
 	.aw-sub { font-size: .78rem; color: var(--aw-muted); margin: .15rem 0 0; line-height: 1.4; }
+	/* Reserve subtitle space so the demo window keeps a constant height across views. */
+	/* Tailwind v4 keeps its preflight inside @layer base, and !important declarations
+	   invert cascade layers, so the override must join the same layer to win. */
+	@layer base { .aw-sub[hidden] { display: block !important; visibility: hidden; min-height: calc(0.78rem * 1.4); } }
 	.aw-top-actions { display: flex; align-items: center; gap: .4rem; flex-shrink: 0; }
 	.aw-top-actions[hidden] { display: none; }
 	.appwin .aw-btn { display: inline-flex; align-items: center; gap: .3rem; font-size: .78rem; font-weight: 500; padding: .4rem .65rem; border-radius: var(--radius-sm); border: 1px solid var(--aw-line); background: var(--aw-surface); color: var(--aw-muted); white-space: nowrap; }
@@ -125,6 +129,17 @@
 	.appwin .aw-selbar button.sel-clear:hover { background: var(--aw-danger-bg); color: var(--aw-danger); border-color: var(--aw-danger); }
 	.appwin .aw-selbar svg { width: 11px; height: 11px; }
 	.aw-body { margin: 0 1.75rem 1.5rem; }
+/* Stable demo frame: every view keeps the same height and scrolls inside. */
+	.appwin .aw-main { height: 640px; }
+	.appwin .aw-view { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; }
+	.appwin .aw-view .aw-body { flex: 1 1 auto; height: auto; min-height: 0; }
+	.appwin .aw-settings { flex: 1 1 auto; height: auto; min-height: 0; }
+	.aw-body { overflow-y: auto; overscroll-behavior: contain; }
+	.aw-settings { overflow-y: auto; }
+	.aw-body::-webkit-scrollbar, .aw-settings::-webkit-scrollbar { width: 10px; }
+	.aw-body::-webkit-scrollbar-thumb, .aw-settings::-webkit-scrollbar-thumb { background: var(--aw-line); border-radius: 5px; border: 2px solid var(--aw-bg); }
+	.aw-body::-webkit-scrollbar-track, .aw-settings::-webkit-scrollbar-track { background: transparent; }
+	.aw-body .aw-thead { position: sticky; top: 0; z-index: 1; background: var(--aw-surface); }
 	.aw-table.nowcheck .aw-empty-cell { grid-column: 1 / -1; }
 	.aw-table { background: var(--aw-surface); border: 1px solid var(--aw-line); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--aw-shadow-sm); }
 	.aw-thead, .aw-row { display: grid; grid-template-columns: 32px minmax(0,1fr) 152px 92px 100px; gap: 1rem; align-items: center; padding: .5rem 1.2rem; }
@@ -223,6 +238,9 @@
 	@keyframes aw-toastin { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 	@media (prefers-reduced-motion: reduce) { .appwin *, .aw-selbar.show, .aw-notice.show { animation: none !important; transition-duration: .01ms !important; } }
 	@container aw (max-width: 620px) {
+		.appwin .aw-main { height: 560px; }
+		.aw-shortcut { display: none; }
+		.aw-top-actions { flex-wrap: nowrap; }
 		.aw-thead, .aw-row { grid-template-columns: 32px minmax(0,1fr) 104px 92px; gap: .75rem; }
 		.aw-table.nowcheck .aw-thead, .aw-table.nowcheck .aw-row { grid-template-columns: minmax(0,1fr) 104px 92px; }
 		.aw-size { display: none; }
