@@ -154,7 +154,7 @@ if(!document.querySelector(".appwin"))return;
 		}).join('');
 	}
 	function tableHtml(list, emptyMsg) {
-		var head = '<div class="aw-thead"><span></span><span>NOMBRE</span><span class="aw-th-r">MODIFICADO</span><span class="aw-th-r aw-size">TAMAÑO</span><span class="aw-th-r">ACCIONES</span></div>';
+		var head = '<div class="aw-thead"><span></span><span>NOMBRE</span><span class="aw-th-r aw-th-date">MODIFICADO</span><span class="aw-th-r aw-size">TAMAÑO</span><span class="aw-th-r">ACCIONES</span></div>';
 		if (list.length === 0) {
 			return head + '<div class="aw-row"><span></span><span class="aw-empty aw-empty-cell">' + emptyMsg + '</span></div>';
 		}
@@ -193,7 +193,7 @@ if(!document.querySelector(".appwin"))return;
 		}).join('');
 	}
 	function recentTableHtml(list) {
-		var head = '<div class="aw-thead"><span>NOMBRE</span><span class="aw-th-r">MODIFICADO</span><span class="aw-th-r aw-size">TAMAÑO</span><span class="aw-th-r">ACCIONES</span></div>';
+		var head = '<div class="aw-thead"><span>NOMBRE</span><span class="aw-th-r aw-th-date">MODIFICADO</span><span class="aw-th-r aw-size">TAMAÑO</span><span class="aw-th-r">ACCIONES</span></div>';
 		if (list.length === 0) {
 			return head + '<div class="aw-row"><span class="aw-empty aw-empty-cell">' + (state.recentQuery.trim() ? 'No hay coincidencias.' : 'Aún no hay archivos recientes.') + '</span></div>';
 		}
@@ -206,7 +206,7 @@ if(!document.querySelector(".appwin"))return;
 		}).join('');
 	}
 	function trashTableHtml() {
-		var head = '<div class="aw-thead"><span></span><span>NOMBRE</span><span class="aw-th-r">MODIFICADO</span><span class="aw-th-r aw-size">TAMAÑO</span><span class="aw-th-r">ACCIONES</span></div>';
+		var head = '<div class="aw-thead"><span></span><span>NOMBRE</span><span class="aw-th-r aw-th-date">MODIFICADO</span><span class="aw-th-r aw-size">TAMAÑO</span><span class="aw-th-r">ACCIONES</span></div>';
 		if (TRASH.length === 0) {
 			return head + '<div class="aw-row"><span class="aw-trash-empty"><span class="aw-te-ico">' + ICONS.trash + '</span><span>La papelera está vacía.</span></span></div>';
 		}

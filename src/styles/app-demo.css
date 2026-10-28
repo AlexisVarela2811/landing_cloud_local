@@ -259,7 +259,22 @@
 		.aw-sub { font-size: .72rem; }
 		.aw-thead, .aw-row { grid-template-columns: 28px minmax(0,1fr) 88px; gap: .5rem; }
 		.aw-table.nowcheck .aw-thead, .aw-table.nowcheck .aw-row { grid-template-columns: minmax(0,1fr) 88px; }
-		.aw-meta { display: none; }
+		.aw-meta, .aw-th-date, .aw-size { display: none; }
+		/* Stack rows: name on its own full-width line, actions tucked below right. */
+		.aw-table .aw-thead { display: none; }
+		.aw-table.nowcheck .aw-colcheck { display: none; }
+		.aw-table .aw-row { display: flex; flex-wrap: wrap; align-items: center; row-gap: .35rem; }
+		.aw-row .aw-colcheck { flex: 0 0 auto; }
+		.aw-row .aw-namecell { flex: 1 1 0; min-width: 0; }
+		.aw-row .aw-actions { margin-left: auto; }
+		.aw-act { width: 24px; height: 24px; }
+		.aw-gact { width: 20px; height: 20px; }
+		.aw-searchwrap { flex: 1 1 150px; }
+		.aw-tip { display: none !important; }
+		.appwin { grid-template-columns: 48px minmax(0,1fr); }
+		.aw-rail { width: 48px; }
+		.aw-brand { width: 32px; height: 32px; }
+		.aw-thead, .aw-row { padding-left: .65rem; padding-right: .65rem; }
 		.aw-row .aw-namecell small { white-space: normal; }
 	}
 
