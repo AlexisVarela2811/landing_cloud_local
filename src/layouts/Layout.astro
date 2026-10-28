@@ -23,6 +23,14 @@ const ogAlt = 'CloudLocal — A quiet place for your files';
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
+		<script is:inline>
+			(function () {
+				var preference;
+				try { preference = localStorage.getItem('cloudlocal-site-theme'); } catch (_) {}
+				var dark = preference === 'dark' || (preference !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches);
+				document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+			})();
+		</script>
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="32x32" />
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />

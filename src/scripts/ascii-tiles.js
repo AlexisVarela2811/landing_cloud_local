@@ -62,7 +62,7 @@
         var reveal=still ? 1 : Math.max(0,Math.min(1,(t-(p.y/height*.9+p.x/width*.35))/.65));
         var wave=still ? 0 : Math.sin(t*1.8+p.phase);
         ctx.globalAlpha=reveal*p.strength*(still ? 1 : .82 + .18*(.5+.5*wave));
-        ctx.fillStyle=colors[p.color];
+        ctx.fillStyle=document.documentElement.dataset.theme === 'dark' ? (p.color === 0 ? '#5eead4' : '#14b8a6') : colors[p.color];
         var drift=still ? 0 : (1-reveal)*10;
         ctx.fillText(p.glyph,p.x+wave*.8+Math.sin(p.phase)*drift,p.y+wave*.6+Math.cos(p.phase)*drift);
       });
@@ -72,6 +72,7 @@
   }
   function restart() { cancelAnimationFrame(frame); draw(performance.now()); }
   reduced.addEventListener('change', restart);
+  new MutationObserver(restart).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
   document.addEventListener('visibilitychange', function() { if (!document.hidden) restart(); else cancelAnimationFrame(frame); });
   restart();
 })();

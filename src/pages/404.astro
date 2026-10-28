@@ -4,6 +4,14 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
+		<script is:inline>
+			(function () {
+				var preference;
+				try { preference = localStorage.getItem('cloudlocal-site-theme'); } catch (_) {}
+				var dark = preference === 'dark' || (preference !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches);
+				document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+			})();
+		</script>
 		<meta name="viewport" content="width=device-width" />
 		<meta name="robots" content="noindex" />
 		<title>404 — CloudLocal</title>
@@ -38,6 +46,15 @@
 			.btn-primary:hover { background: #14b8a6; transform: translateY(-1px); box-shadow: 0 2px 8px rgba(13, 148, 136, .25); }
 			.btn-ghost { color: #5c6674; border: 1px solid #ddd6cd; background: #fdfbf6; }
 			.btn-ghost:hover { color: #1a1f2b; }
+			a:focus-visible { outline: 2px solid #14b8a6; outline-offset: 3px; }
+			:root[data-theme="dark"] { color-scheme: dark; }
+			:root[data-theme="dark"] body { background: #0b0f19; color: #e2e8f0; }
+			:root[data-theme="dark"] .glow { background: radial-gradient(closest-side, rgba(20, 184, 166, .15), transparent 70%); }
+			:root[data-theme="dark"] .badge, :root[data-theme="dark"] h1 em { color: #5eead4; }
+			:root[data-theme="dark"] p { color: #94a3b8; }
+			:root[data-theme="dark"] .btn-ghost { color: #e2e8f0; border-color: #2d3a4f; background: #141b2d; }
+			:root[data-theme="dark"] .btn-ghost:hover { color: #5eead4; }
+			@media (prefers-reduced-motion: reduce) { .btn { transition: none; } }
 		</style>
 	</head>
 	<body>

@@ -22,7 +22,10 @@
 	--radius-xl: 16px;
 }
 
-[data-theme="dark"] {
+:root[data-theme="dark"] {
+	color-scheme: dark;
+	--accent: #5eead4;
+	--accent-bg: rgba(20,184,166,.10);
 	--bg: #0b0f19;
 	--surface: #141b2d;
 	--text: #e2e8f0;
@@ -93,3 +96,7 @@ body {
 @media (prefers-reduced-motion: reduce) {
 	.dot-tile { animation: none !important; }
 }
+
+:root[data-theme="dark"] body { background-image: radial-gradient(ellipse at 50% 5%, rgba(20,184,166,.10), transparent 42rem); background-repeat: no-repeat; }
+:root[data-theme="dark"] .btn-primary { background: #0d9488; color: #fff; }
+:root[data-theme="dark"] .btn-primary:hover { background: #14b8a6; }
